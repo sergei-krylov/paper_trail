@@ -484,6 +484,13 @@ defmodule PaperTrailTest.SimpleModeBangFunctions do
              }
            } = version
 
+    assert version.item_changes["plural"] == [
+             %{"name" => "Plural_1"},
+             %{"name" => "Plural_2", "language" => "en"}
+           ]
+
+    assert Map.equal?(version.item_changes["singular"], %{"name" => "Singular"})
+
     assert person == first(Person, :id) |> repo().one
   end
 
